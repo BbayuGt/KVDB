@@ -73,7 +73,7 @@ fn handle_connection(stream: TcpStream, arc_db: Arc<Mutex<Database>>) {
                         reply(&mut stre, "Berikan value\n");
                     }
                     else {
-                        let result = db.set(&act.key, act_value.unwrap());
+                        let result = db.set(&act.key, &act_value.unwrap());
                         if result {
                             reply(&mut stre, "Success!\n");
                         } else {
@@ -87,7 +87,7 @@ fn handle_connection(stream: TcpStream, arc_db: Arc<Mutex<Database>>) {
                         reply(&mut stre, "Value tidak valid!\n");
                     }
                     else {
-                        let result = db.update(&act.key, act_value.unwrap());
+                        let result = db.update(&act.key, &act_value.unwrap());
                         if result {
                             reply(&mut stre, "Success!\n");
                         } else {
