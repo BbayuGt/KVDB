@@ -15,7 +15,7 @@ pub struct Actions {
 
 pub fn parse(input: String) -> Result<Actions, String> {
 
-     let input_splitted: Vec<&str> = input.split(' ').into_iter().collect();
+     let input_splitted: Vec<&str> = input.split_whitespace().into_iter().collect();
 
      if input_splitted.len() < 2 {
          Err(String::from("Invalid Format"))
