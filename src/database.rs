@@ -6,10 +6,10 @@ pub struct Database {
 
 pub trait Crud {
     fn new() -> Self;
-    fn get(&self, key: &String) -> Option<String>;
-    fn set(&mut self, key: &String, value: String) -> bool;
-    fn update(&mut self, key: &String, new_value: String) -> bool;
-    fn delete(&mut self, key: &String) -> bool;
+    fn get(&self, key: &str) -> Option<String>;
+    fn set(&mut self, key: &str, value: &str) -> bool;
+    fn update(&mut self, key: &str, new_value: &str) -> bool;
+    fn delete(&mut self, key: &str) -> bool;
 }
 
 impl Crud for Database {
@@ -19,24 +19,23 @@ impl Crud for Database {
         }
     }
     
-    fn get(&self, key: &String) -> Option<String> {
+    fn get(&self, key: &str) -> Option<String> {
         println!("{:#?}", self.data);
         self.data.get(key).cloned()
     }
 
-    fn set(&mut self, key: &String, value: String) -> bool {
+    fn set(&mut self, key: &str, value: &str) -> bool {
         if self.data.contains_key(key) {
             false
         } else {
-            self.data.insert(key.clone(), value);
+            self.data.insert(key.to_string(), value.to_string());
             true
         }
     }
 
-    fn update(&mut self, key: &String, new_value: String) -> bool {
+    fn update(&mut self, key: &str, new_value: &str) -> bool {
         if self.data.contains_key(key) {
-            println!("asdasd");
-            self.data.insert(key.clone(), new_value);
+            self.data.insert(key.to_string(), new_value.to_string());
             true
         }
         else {
@@ -45,7 +44,7 @@ impl Crud for Database {
         
     }
 
-    fn delete(&mut self, key: &String) -> bool {
+    fn delete(&mut self, key: &str) -> bool {
         if self.data.contains_key(key) {
             self.data.remove(key);
             true
