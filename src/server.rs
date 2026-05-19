@@ -42,14 +42,14 @@ fn handle_connection(stream: TcpStream, arc_db: Arc<Mutex<Database>>) {
         let _ = buf_reader
             .read_line(&mut text);
 
-        let text_stripped = text.strip_suffix("\n");
-        if text_stripped == None {
+        let text_stripped = text.trim();
+        if text_stripped == "" {
             println!("No data provided, closing");
             stream.shutdown(std::net::Shutdown::Both).unwrap();
             break
         }
 
-        let parsed = parser::parse(String::from(text_stripped.unwrap()));
+        let parsed = parser::parse(String::from(text_stripped));
 
         if parsed.is_err() {
             println!("{}", parsed.unwrap_err());
