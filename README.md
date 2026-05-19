@@ -34,4 +34,14 @@ Notes:
 
 * Space is not allowed for keys, value is fine.
 
+## Postmortem
 
+The project is done! It's a lot more simple than I expected! So here's what I learned:
+
+* Using your hands (and your mind) to write code is still fun!
+* Rust is quite easy to understand when you know how to play with it (the borrowchecker).
+* I'm not saying that it's an easy language, but it's not THAT bad (You should try it!)
+* My Javascript-ass background couldn't comprehend ownership and borrowing at first, WHAT DO YOU MEAN I CAN'T USE A VARIABLE ANYWHERE I WANT
+* But in the end, I can see how this strictness can help with writing safer code.
+
+I'll see ya in my next projects! (If I ever will do these again!)
